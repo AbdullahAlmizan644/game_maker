@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+from django.utils.timezone import now
 
 # Create your models here.
 class Contact(models.Model):
@@ -32,6 +34,23 @@ class Blog(models.Model):
 
     def __str__(self):
         return f"{self.title}"
+
+
+
+
+
+class Comment(models.Model):
+    sno=models.AutoField(primary_key=True)
+    Comment=models.CharField(max_length=200)
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    post=models.ForeignKey(Blog,on_delete=models.CASCADE)
+    parents=models.ForeignKey('self',on_delete=models.CASCADE,null=True)
+    timestamp=models.DateTimeField(default=now)
+
+    def __str__(self):
+        return f"{self.Comment} by {self.user}"
+
+
 
 
 
@@ -74,7 +93,7 @@ class Team(models.Model):
 
 
     def __str__(self):
-        return f"{self.team_name}"
+        return f"Team:  {self.team_name}"
 
 
 class Match(models.Model):
@@ -82,7 +101,7 @@ class Match(models.Model):
     team1=models.ForeignKey(Team, related_name='team1',on_delete=models.CASCADE)
     team1_goal=models.IntegerField(default=0)
     team2=models.ForeignKey(Team, related_name='team2',on_delete=models.CASCADE)
-    team1_goal=models.IntegerField(default=0)
+    team2_goal=models.IntegerField(default=0)
     veneu=models.CharField(max_length=255)
     timestamp=models.DateTimeField()
 
@@ -101,8 +120,14 @@ class Pointable(models.Model):
 
 
     def __str__(self):
-        return f"Pointtable"
+        return f"{self.team_name} pointtable win:{self.win}"
 
 
-    
+class Match_Video(models.Model):
+    video_title=models.CharField(max_length=200)
+    video_link=models.CharField(max_length=1000)
+    match_image=models.ImageField(upload_to='static/home/images')
 
+
+    def __str__(self):
+        return f"{self.video_title}"

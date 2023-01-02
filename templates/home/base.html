@@ -51,7 +51,7 @@
       <div class="container">
         <div class="d-flex align-items-center">
           <div class="site-logo">
-            <a href="index.html">
+            <a href="{% url 'home' %}">
               <!-- <img src="{% static 'home/images/logo.png' %}" alt="Logo"> -->
               <span>Game Maker</span>
             </a>
@@ -61,14 +61,16 @@
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
                 <li><a href="{% url 'home' %}" class="nav-link">Home</a></li>
                 <li><a href="{% url 'matches' %}" class="nav-link">Matches</a></li>
-                <li><a href="{% url 'players' %}" class="nav-link">Players</a></li>
+                <!-- <li><a href="{% url 'players' %}" class="nav-link">Players</a></li> -->
                 <li><a href="{% url 'blog' %}" class="nav-link">News</a></li>
                 <li><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
                 {% if user.is_authenticated %}
                 <li><a href="{% url 'dashboard' %}" class="nav-link">{{ request.user }}</a></li>
+                <li><a href="{% url 'user_logout' %}" class="nav-link">Logout</a></li>
                 {% else  %} 
                 <li><a href="{% url 'user_login' %}" class="nav-link">Login</a></li>
                 {% endif %}
+                <li><a href="{% url 'team' %}" class="nav-link">Team Details</a></li>
                 <li><a href="/admin" class="nav-link">Dashboard</a></li>
               </ul>
             </nav>

@@ -1,0 +1,195 @@
+{% extends 'dashboard/base_dashboard.html' %}
+{% block title %} Add Teams {% endblock %}
+{% block content %}
+
+<div id="layoutSidenav">
+    <div id="layoutSidenav_nav">
+        <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+            <div class="sb-sidenav-menu">
+                <div class="nav">
+                    <div class="sb-sidenav-menu-heading">Core</div>
+                    <a class="nav-link" href="{% url 'dashboard' %}">
+                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        Dashboard
+                    </a>
+
+                </div>
+            </div>
+            <div class="sb-sidenav-footer">
+                <div class="small">Logged in as:</div>
+                Start Bootstrap
+            </div>
+        </nav>
+    </div>
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container-fluid px-4">
+                <h1 class="mt-4">Add Teams</h1>
+                <ol class="breadcrumb mb-4">
+                    <li class="breadcrumb-item active">Add Teams</li>
+                </ol>
+                <!-- <div class="row">
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card bg-primary text-white mb-4">
+                            <div class="card-body">Primary Card</div>
+                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                <a class="small text-white stretched-link" href="#">View Details</a>
+                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card bg-warning text-white mb-4">
+                            <div class="card-body">Warning Card</div>
+                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                <a class="small text-white stretched-link" href="#">View Details</a>
+                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-table me-1"></i>
+                        Add Teams
+                    </div>
+                    <div class="card-body">
+                        <form action="/add_teams/{{tournament.tournament_name}}" method="post" id="team" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Team Name</label>
+                                <input type="text" name="team_name" class="form-control" id="TeamName" placeholder="Team name">
+                            </div>
+
+                            <div class="mb-3">
+                                <h5 style="color: lightcoral;" name="tournament_name" >{{ tournament.tournament_name }}</h5>
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <label class="input-group-text" for="inputGroupFile01">Team Image</label>
+                                <input type="file" name="team_image" accept="image" class="form-control" id="inputGroupFile01">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Player1 Name</label>
+                                <input type="text" name="player1_name" class="form-control" id="tournament" placeholder="player1 name">
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <label class="input-group-text" for="inputGroupFile01">Player1 Image</label>
+                                <input type="file" name="player1_image" class="form-control" id="inputGroupFile01">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Player2 Name</label>
+                                <input type="text" name="player2_name" class="form-control" id="tournament" placeholder="player2 name">
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <label class="input-group-text" for="inputGroupFile01">Player2 Image</label>
+                                <input type="file" name="player2_image" class="form-control" id="inputGroupFile01">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Player3 Name</label>
+                                <input type="text" name="player3_name" class="form-control" id="tournament" placeholder="player3 name">
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <label class="input-group-text" for="inputGroupFile01">Player3 Image</label>
+                                <input type="file" name="player3_image" class="form-control" id="inputGroupFile01">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Player4 Name</label>
+                                <input type="text" name="player4_name" class="form-control" id="tournament" placeholder="player4 name">
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <label class="input-group-text" for="inputGroupFile01">Player4 Image</label>
+                                <input type="file" name="player4_image" class="form-control" id="inputGroupFile01">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Player5 Name</label>
+                                <input type="text"  name="player5_name" class="form-control" id="tournament" placeholder="player5 name">
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <label class="input-group-text" for="inputGroupFile01">Player5 Image</label>
+                                <input type="file" name="player5_image" class="form-control" id="inputGroupFile01">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Player6 Name</label>
+                                <input type="text" name="player6_name" class="form-control" id="tournament" placeholder="player6 name">
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <label class="input-group-text" for="inputGroupFile01">Player6 Image</label>
+                                <input type="file" name="player6_image" class="form-control" id="inputGroupFile01">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Player7 Name</label>
+                                <input type="text" name="player7_name" class="form-control" id="tournament" placeholder="player7 name">
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <label class="input-group-text" for="inputGroupFile01">Player7 Image</label>
+                                <input type="file" name="player7_image" class="form-control" id="inputGroupFile01">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Player8 Name</label>
+                                <input type="text" name="player8_name"  class="form-control" id="tournament" placeholder="player8 name">
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <label class="input-group-text" for="inputGroupFile01">Player8 Image</label>
+                                <input type="file" name="player8_image" class="form-control" id="inputGroupFile01">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Player9 Name</label>
+                                <input type="text" name="player9_name" class="form-control" id="tournament" placeholder="player9 name">
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <label class="input-group-text" for="inputGroupFile01">Player9 Image</label>
+                                <input type="file" name="player9_image" class="form-control" id="inputGroupFile01">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Player10 Name</label>
+                                <input type="text" name="player10_name" class="form-control" id="tournament" placeholder="player10 name">
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <label class="input-group-text" for="inputGroupFile01">Player10 Image</label>
+                                <input type="file" name="player10_image" class="form-control" id="inputGroupFile01">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Player11 Name</label>
+                                <input type="text" name="player11_name" class="form-control" id="tournament" placeholder="player11 name">
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <label class="input-group-text" for="inputGroupFile01">Player11 Image</label>
+                                <input type="file" name="player11_image" class="form-control" id="inputGroupFile01">
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <input type="submit" form="team" value="save" class="btn btn-primary" id="inputGroupFile01">
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </main>
+
+
+        {% endblock %}

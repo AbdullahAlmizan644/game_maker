@@ -1,0 +1,235 @@
+{% extends 'dashboard/base_dashboard.html' %}
+{% block title %} Team {% endblock %}
+{% block content %}
+
+{% load static %}
+<div id="layoutSidenav">
+    <div id="layoutSidenav_nav">
+        <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+            <div class="sb-sidenav-menu">
+                <div class="nav">
+                    <div class="sb-sidenav-menu-heading">Core</div>
+                    <a class="nav-link" href="{% url 'dashboard' %}">
+                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        Dashboard
+                    </a>
+
+                </div>
+            </div>
+            <div class="sb-sidenav-footer">
+                <div class="small">Logged in as:</div>
+                {{ request.user }}
+            </div>
+        </nav>
+    </div>
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container-fluid px-4">
+                <h1 class="mt-4">Team Details</h1>
+                <br>
+                <br>
+                <div class="card mb-4">
+
+                    <div class="container">
+
+                        <h1 class="fw-light text-center text-lg-start mt-4 mb-0">Team name:{{ team_details.team_name }}</h1>
+
+                        <hr class="mt-2 mb-5">
+
+                        <div class="row text-center text-lg-start">
+
+                            <div class="col-lg-3 col-md-4 col-6">
+                                <h6>Team Image</h6>
+                                <a href="#" class="d-block mb-4 h-100">
+                                    <img class="img-fluid img-thumbnail"
+                                        src="{{ team_details.team_image }}" alt="">
+                                    
+                                </a>
+
+                            </div>
+
+                            <div class="col-lg-3 col-md-4 col-6">
+                                <h6>{{ team_details.player1_name }}</h6>
+                                <a href="#" class="d-block mb-4 h-100">
+                                    <img class="img-fluid img-thumbnail"
+                                        src="{{team_details.player1_image}}" alt="">
+                                    
+                                </a>
+
+                            </div>
+
+                            <div class="col-lg-3 col-md-4 col-6">
+                                <h6>{{ team_details.player2_name }}</h6>
+                                <a href="#" class="d-block mb-4 h-100">
+                                    <img class="img-fluid img-thumbnail"
+                                        src="{{team_details.player2_image}}" alt="">
+                                    
+                                </a>
+
+                            </div>
+
+                            <div class="col-lg-3 col-md-4 col-6">
+                                <h6>{{ team_details.player3_name }}</h6>
+                                <a href="#" class="d-block mb-4 h-100">
+                                    <img class="img-fluid img-thumbnail"
+                                        src="{{team_details.player3_image}}" alt="">
+                                    
+                                </a>
+
+                            </div>
+
+                            <div class="col-lg-3 col-md-4 col-6">
+                                <h6>{{ team_details.player4_name }}</h6>
+                                <a href="#" class="d-block mb-4 h-100">
+                                    <img class="img-fluid img-thumbnail"
+                                        src="{{team_details.player4_image}}" alt="">
+                                    
+                                </a>
+
+                            </div>
+
+                            <div class="col-lg-3 col-md-4 col-6">
+                                <h6>{{ team_details.player5_name }}</h6>
+                                <a href="#" class="d-block mb-4 h-100">
+                                    <img class="img-fluid img-thumbnail"
+                                        src="{{team_details.player5_image}}" alt="">
+                                    
+                                </a>
+
+                            </div>
+
+                            <div class="col-lg-3 col-md-4 col-6">
+                                <h6>{{ team_details.player6_name }}</h6>
+                                <a href="#" class="d-block mb-4 h-100">
+                                    <img class="img-fluid img-thumbnail"
+                                        src="{{team_details.player6_image}}" alt="">
+                                    
+                                </a>
+
+                            </div>
+
+                            <div class="col-lg-3 col-md-4 col-6">
+                                <h6>{{ team_details.player7_name }}</h6>
+                                <a href="#" class="d-block mb-4 h-100">
+                                    <img class="img-fluid img-thumbnail"
+                                        src="{{team_details.player7_image}}" alt="">
+                                    
+                                </a>
+
+                            </div>
+
+                            <div class="col-lg-3 col-md-4 col-6">
+                                <h6>{{ team_details.player8_name }}</h6>
+                                <a href="#" class="d-block mb-4 h-100">
+                                    <img class="img-fluid img-thumbnail"
+                                        src="{{team_details.player8_image}}" alt="">
+                                    
+                                </a>
+
+                            </div>
+
+                            <div class="col-lg-3 col-md-4 col-6">
+                                <h6>{{ team_details.player9_name }}</h6>
+                                <a href="#" class="d-block mb-4 h-100">
+                                    <img class="img-fluid img-thumbnail"
+                                        src="{{team_details.player9_image}}" alt="">
+                                    
+                                </a>
+
+                            </div>
+
+                            <div class="col-lg-3 col-md-4 col-6">
+                                <h6>{{ team_details.player10_name }}</h6>
+                                <a href="#" class="d-block mb-4 h-100">
+                                    <img class="img-fluid img-thumbnail"
+                                        src="{{team_details.player10_image}}" alt="">
+                                    
+                                </a>
+
+                            </div>
+
+                            <div class="col-lg-3 col-md-4 col-6">
+                                <h6>{{ team_details.player11_name }}</h6>
+                                <a href="#" class="d-block mb-4 h-100">
+                                    <img class="img-fluid img-thumbnail"
+                                        src="{{team_details.player11_image}}" alt="">
+                                    
+                                </a>
+
+                            </div>
+
+                            <!-- <div class="col-lg-3 col-md-4 col-6">
+                                <a href="#" class="d-block mb-4 h-100">
+                                    <img class="img-fluid img-thumbnail"
+                                        src="https://source.unsplash.com/aob0ukAYfuI/400x300" alt="">
+                                </a>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-6">
+                                <a href="#" class="d-block mb-4 h-100">
+                                    <img class="img-fluid img-thumbnail"
+                                        src="https://source.unsplash.com/EUfxH-pze7s/400x300" alt="">
+                                </a>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-6">
+                                <a href="#" class="d-block mb-4 h-100">
+                                    <img class="img-fluid img-thumbnail"
+                                        src="https://source.unsplash.com/M185_qYH8vg/400x300" alt="">
+                                </a>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-6">
+                                <a href="#" class="d-block mb-4 h-100">
+                                    <img class="img-fluid img-thumbnail"
+                                        src="https://source.unsplash.com/sesveuG_rNo/400x300" alt="">
+                                </a>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-6">
+                                <a href="#" class="d-block mb-4 h-100">
+                                    <img class="img-fluid img-thumbnail"
+                                        src="https://source.unsplash.com/AvhMzHwiE_0/400x300" alt="">
+                                </a>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-6">
+                                <a href="#" class="d-block mb-4 h-100">
+                                    <img class="img-fluid img-thumbnail"
+                                        src="https://source.unsplash.com/2gYsZUmockw/400x300" alt="">
+                                </a>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-6">
+                                <a href="#" class="d-block mb-4 h-100">
+                                    <img class="img-fluid img-thumbnail"
+                                        src="https://source.unsplash.com/EMSDtjVHdQ8/400x300" alt="">
+                                </a>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-6">
+                                <a href="#" class="d-block mb-4 h-100">
+                                    <img class="img-fluid img-thumbnail"
+                                        src="https://source.unsplash.com/8mUEy0ABdNE/400x300" alt="">
+                                </a>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-6">
+                                <a href="#" class="d-block mb-4 h-100">
+                                    <img class="img-fluid img-thumbnail"
+                                        src="https://source.unsplash.com/G9Rfc1qccH4/400x300" alt="">
+                                </a>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-6">
+                                <a href="#" class="d-block mb-4 h-100">
+                                    <img class="img-fluid img-thumbnail"
+                                        src="https://source.unsplash.com/aJeH0KcFkuc/400x300" alt="">
+                                </a>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-6">
+                                <a href="#" class="d-block mb-4 h-100">
+                                    <img class="img-fluid img-thumbnail"
+                                        src="https://source.unsplash.com/p2TQ-3Bh3Oo/400x300" alt="">
+                                </a>
+                            </div> -->
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </main>
+
+
+        {% endblock %}

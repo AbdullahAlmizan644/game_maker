@@ -2,6 +2,9 @@
 {% load static %}
 {% block body %}
 
+{% load humanize %}
+{% load extras %}
+
 <div class="hero overlay" style="background-image: url( {{ post.image.url }} );">
   <div class="container">
     <div class="row align-items-center">
@@ -27,120 +30,73 @@
 
         <div class="pt-5">
           <h3 class="mb-5 text-white">6 Comments</h3>
+
+          {% for c in comment %}
           <ul class="comment-list">
             <li class="comment">
               <div class="vcard bio">
-                <img src="{% static 'home/images/person_1.jpg'%}" alt="Image placeholder">
+                <img src="{% static 'home/images/person_1.jpg'%} " alt="Image placeholder">
               </div>
               <div class="comment-body">
-                <h3>Jean Doe</h3>
-                <div class="meta">January 9, 2018 at 2:21pm</div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus,
-                  ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum
-                  impedit necessitatibus, nihil?</p>
-                <p><a href="#" class="reply">Reply</a></p>
-              </div>
-            </li>
+                <h3>{{ c.user }}</h3>
+                <div class="meta">{{c.timestamp|naturaltime }}</div>
+                <p>{{ c.Comment }}</p>
+                <!-- <p><a href="#" class="reply">Reply</a></p> -->
+                <!-- <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapseExample{{c.sno}}" aria-expanded="false" aria-controls="collapseExample{{c.sno}}">
+                  Reply
+                </button>
+                <br>
+                <br>
+                <div class="collapse bg-dark" id="collapseExample{{c.sno}}">
+                  <div class="card card-body">
+                    <form action="{% url 'user_comment' %}" method="post" id="reply">
+                      {% csrf_token %}
+                      <div class="mb-3">
+                        <textarea name="comment" id="" cols="50" rows="5"></textarea>
+                        <input type="hidden" value="{{c.sno}}" name="parentSno">
+                        
+                      </div>
+                      <input type="hidden" value="{{post.id}}" name="postSno">
+                      <button type="submit" form="reply"  class="btn btn-primary">Submit</button>
+                    </form>
 
-            <li class="comment">
-              <div class="vcard bio">
-                <img src="images/person_1.jpg" alt="Image placeholder">
-              </div>
-              <div class="comment-body">
-                <h3>Jean Doe</h3>
-                <div class="meta">January 9, 2018 at 2:21pm</div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus,
-                  ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum
-                  impedit necessitatibus, nihil?</p>
-                <p><a href="#" class="reply">Reply</a></p>
+                  </div>
+                </div> -->
               </div>
 
-              <ul class="children">
+       
+              <!-- <ul class="children">
                 <li class="comment">
                   <div class="vcard bio">
-                    <img src="images/person_1.jpg" alt="Image placeholder">
+                    <img src="{% static 'home/images/person_1.jpg'%}" alt="Image placeholder">
                   </div>
                   <div class="comment-body">
-                    <h3>Jean Doe</h3>
-                    <div class="meta">January 9, 2018 at 2:21pm</div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus,
-                      ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum
-                      impedit necessitatibus, nihil?</p>
+                    <h3>{{ reply.user }}</h3>
+                    <div class="meta">{{ reply.timestamp|naturaltime }}</div>
+                    <p>{{ reply.Comment }}</p>
                     <p><a href="#" class="reply">Reply</a></p>
                   </div>
-
-
-                  <ul class="children">
-                    <li class="comment">
-                      <div class="vcard bio">
-                        <img src="images/person_1.jpg" alt="Image placeholder">
-                      </div>
-                      <div class="comment-body">
-                        <h3>Jean Doe</h3>
-                        <div class="meta">January 9, 2018 at 2:21pm</div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum
-                          necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure!
-                          Quam voluptas earum impedit necessitatibus, nihil?</p>
-                        <p><a href="#" class="reply">Reply</a></p>
-                      </div>
-
-                      <ul class="children">
-                        <li class="comment">
-                          <div class="vcard bio">
-                            <img src="images/person_1.jpg" alt="Image placeholder">
-                          </div>
-                          <div class="comment-body">
-                            <h3>Jean Doe</h3>
-                            <div class="meta">January 9, 2018 at 2:21pm</div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum
-                              necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste
-                              iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                            <p><a href="#" class="reply">Reply</a></p>
-                          </div>
-                        </li>
-                      </ul>
-                    </li>
-                  </ul>
                 </li>
-              </ul>
-            </li>
+              </ul> -->
 
-            <li class="comment">
-              <div class="vcard bio">
-                <img src="images/person_1.jpg" alt="Image placeholder">
-              </div>
-              <div class="comment-body">
-                <h3>Jean Doe</h3>
-                <div class="meta">January 9, 2018 at 2:21pm</div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus,
-                  ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum
-                  impedit necessitatibus, nihil?</p>
-                <p><a href="#" class="reply">Reply</a></p>
-              </div>
+
+
             </li>
           </ul>
+          {% endfor %}
           <!-- END comment-list -->
-
           <div class="comment-form-wrap pt-5">
             <h3 class="mb-5">Leave a comment</h3>
-            <form action="#" class="p-5 bg-light">
-              <div class="form-group">
-                <label for="name">Name *</label>
-                <input type="text" class="form-control" id="name">
-              </div>
-              <div class="form-group">
-                <label for="email">Email *</label>
-                <input type="email" class="form-control" id="email">
-              </div>
-              <div class="form-group">
-                <label for="website">Website</label>
-                <input type="url" class="form-control" id="website">
-              </div>
+            <form action="{% url 'user_comment' %}" method="post" class="p-5 bg-light">
+              {% csrf_token %}
 
               <div class="form-group">
-                <label for="message">Message</label>
-                <textarea name="" id="message" cols="30" rows="10" class="form-control"></textarea>
+                <label for="message">Comment</label>
+                <textarea name="comment" id="message" cols="50" rows="5" class="form-control"></textarea>
               </div>
+              <input type="hidden" value="" name="parentSno">
+              <input type="hidden" value="{{post.id}}" name="postSno">
               <div class="form-group">
                 <input type="submit" value="Post Comment" class="btn btn-primary py-3 px-4 text-white">
               </div>
@@ -182,5 +138,9 @@
     </div>
   </div>
 </div>
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
 {% endblock %}
