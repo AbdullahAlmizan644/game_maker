@@ -1,11 +1,12 @@
 {% extends 'home/base.html' %}
+{% block title %} Post {% endblock %}
 {% load static %}
 {% block body %}
 
 {% load humanize %}
 {% load extras %}
 
-<div class="hero overlay" style="background-image: url( {{ post.image.url }} );">
+<div class="hero overlay" style="background-image: url( '{{post.image.url}}'  );">
   <div class="container">
     <div class="row align-items-center">
       <div class="col-lg-9 mx-auto text-center">
@@ -35,7 +36,7 @@
           <ul class="comment-list">
             <li class="comment">
               <div class="vcard bio">
-                <img src="{% static 'home/images/person_1.jpg'%} " alt="Image placeholder">
+                <img src="{% static 'home/images/person_1.png'%} " alt="Image placeholder">
               </div>
               <div class="comment-body">
                 <h3>{{ c.user }}</h3>
