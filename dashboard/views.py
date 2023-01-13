@@ -33,7 +33,7 @@ def user_login(request):
 
 @login_required(login_url=user_login)
 def dashboard(request):
-        return render(request, "dashboard/index.html")
+    return render(request, "dashboard/index.html")
 
 
 def signup(request):
@@ -91,9 +91,9 @@ def user_logout(request):
     return redirect("/")
 
 
-@login_required(login_url=user_login)
+
 def add_teams(request,slug):
-    if "team_name" in request.session:
+    if "user" in request.session:
         messages.success(request, "You already add team")
         return redirect("/")
 
@@ -181,7 +181,8 @@ def add_teams(request,slug):
 
 
 
-            team=Team(team_name=team_name,
+            team=Team(team_manager=request.user,
+            team_name=team_name,
             team_image=team_image_url,
             tournament=tournament,
             player1_name=player1_name,
@@ -210,7 +211,7 @@ def add_teams(request,slug):
             team.save()
             request.session["team_name"]=team_name
             messages.success(request, "Your team add successfully")
-            return redirect(team)
+            return redirect("/")
 
         return render(request, "dashboard/add_teams.html",{
             "tournament":tournament,
@@ -220,19 +221,11 @@ def add_teams(request,slug):
 
 
 
-
 @login_required(login_url=user_login)
 def team(request):
-    if "team_name" in request.session:
-        name=request.session["team_name"]
-        team_details=Team.objects.filter(team_name=name).first()
+    team_details=Team.objects.filter(team_manager=request.user).first()
 
-        print(team_details.tournament)
-        return render(request, "dashboard/team.html",{
-            "team_details":team_details,
+    return render(request, "dashboard/team.html",{
+                "team_details":team_details,
 
-        })
-
-    else:
-        messages.error(request, "please add team first" )
-        return redirect("/")
+            })

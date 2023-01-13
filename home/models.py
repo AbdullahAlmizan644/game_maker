@@ -65,6 +65,7 @@ class Tournament(models.Model):
 
 
 class Team(models.Model):
+    team_manager=models.CharField(max_length=120)
     team_name=models.CharField(max_length=255)
     team_image=models.ImageField(upload_to='static/home/images')
     tournament=models.ForeignKey(Tournament,on_delete=models.CASCADE)
